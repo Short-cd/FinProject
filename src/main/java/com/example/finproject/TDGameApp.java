@@ -27,9 +27,8 @@ public class TDGameApp extends GameApplication {
     String down = "down";
 //end lazy debugging
     public enum Type {
-        PLAYER,ENEMY,BUILDING,RESOURCE
+        PLAYER,ENEMY,BUILDING,RESOURCE,
     }
-
     boolean downPress, upPress, leftPress, rightPress;
     private Entity player;
 
@@ -117,14 +116,13 @@ public class TDGameApp extends GameApplication {
         * enemy building - stop movement, attack
         *
         * */
-        onCollision(Type.PLAYER, Type.ENEMY, (player, enemy) -> {
-            player.setPosition(checkCollisionLocation(player, enemy));
+        onCollision(Type.PLAYER, Type.ENEMY, (player, building) -> {
+            player.setPosition(checkCollisionLocation(player, building));
 //            play("drop.wav");
         });
     }
     private Point2D checkCollisionLocation(Entity thing1, Entity thing2){
         double xLoc = thing1.getX(), yLoc = thing1.getY();
-        if(getInput())
         if(thing1.getX()<thing2.getRightX()){
             System.out.println(left);
             xLoc = thing2.getX()-thing1.getWidth();

@@ -5,8 +5,7 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
-import com.almasb.fxgl.texture.Texture;
-import com.almasb.fxglgames.drop.Components.PlayerComponent;
+import com.example.finproject.Components.PlayerComponent;
 import javafx.scene.paint.Color;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
@@ -19,7 +18,7 @@ public class gameFactory implements EntityFactory{
     public Entity spawnBucket(SpawnData data){//spawns player
         var texture = texture("PlayerNew.png").outline(Color.web("blue", 0.5), 5);
         return entityBuilder()
-                .type(com.almasb.fxglgames.drop.TDGameApp.Type.PLAYER)
+                .type(TDGameApp.Type.PLAYER)
                 .at(100, 100)
                 .viewWithBBox("player.png")
                 .collidable()
