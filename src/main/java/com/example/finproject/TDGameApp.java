@@ -47,7 +47,7 @@ public class TDGameApp extends GameApplication {
         getGameWorld().addEntityFactory(new gameFactory());
         player = spawn("Player");
 
-        run(() -> spawn("enemy"), Duration.seconds(1));
+        run(() -> spawn("enemy"), Duration.seconds(3));
         run(()-> spawn("building"), Duration.seconds(5));
 
         playerComponent = player.getComponent(PlayerComponent.class);
@@ -116,37 +116,26 @@ public class TDGameApp extends GameApplication {
         * enemy building - stop movement, attack
         *
         * */
-        onCollision(Type.PLAYER, Type.ENEMY, (player, building) -> {
-            player.setPosition(checkCollisionLocation(player, building));
+        onCollision(Type.PLAYER, Type.ENEMY, (player, nonPlayer) -> {
+            player.setPosition(checkCollisionLocation(player, nonPlayer));
 //            play("drop.wav");
         });
     }
     private Point2D checkCollisionLocation(Entity thing1, Entity thing2){
         double xLoc = thing1.getX(), yLoc = thing1.getY();
-        if(thing1.getX()<thing2.getRightX()){
-            System.out.println(left);
-            xLoc = thing2.getX()-thing1.getWidth();
-//            player.getComponent(PlayerComponent.class).
-//            System.out.println(thing1.getX()+" "+thing2.getRightX()+" "+xLoc +"pushed left");
-        }else
-        if(thing1.getRightX()<thing2.getX()){
-            System.out.println(right);
+        if(leftPress&&thing1.getX()<thing2.getRightX()){//pressed "A"
             xLoc = thing2.getRightX();
-            System.out.println(thing1.getRightX()+ " "+thing2.getX()+" "+xLoc + "pushed right");
-        }else
-        if(thing1.getY()<thing2.getBottomY()){
-            System.out.println(down);
-            yLoc = thing2.getBottomY();
-//            System.out.println(thing1.getY()+" "+thing2.getBottomY()+ " "+xLoc + "pushed down");
-        }else
-        if(thing1.getBottomY()<thing2.getY()){
-            System.out.println(up);
-            yLoc = thing2.getY()-thing1.getHeight();
-//            System.out.println(thing1.getBottomY()+" "+thing2.getY()+" "+xLoc + "pushed up");
         }
-//        System.out.println("it checks things");
+        if(rightPress&&thing1.getRightX()>thing2.getX()){//pressed "D"
+            xLoc = thing2.getX()-thing1.getWidth();
+        }
+        if(downPress&&thing1.getBottomY()>thing2.getY()){//pressed "S"
+            yLoc = thing2.getY()-thing1.getHeight();
+        }
+        if(upPress&&thing1.getY()<thing2.getBottomY()){//pressed "W"
+            yLoc = thing2.getBottomY();
+        }
         Point2D newPoint = new Point2D(xLoc, yLoc);
-//        System.out.println(newPoint);
         return newPoint;
     }
 

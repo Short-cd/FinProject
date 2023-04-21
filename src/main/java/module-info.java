@@ -1,9 +1,6 @@
-module com.example.finproject {
+open module com.example.finproject {
     requires javafx.controls;
     requires javafx.fxml;
-            
-                                requires com.almasb.fxgl.all;
-    
-    opens com.example.finproject to javafx.fxml;
+    requires com.almasb.fxgl.all;
     exports com.example.finproject;
 }
