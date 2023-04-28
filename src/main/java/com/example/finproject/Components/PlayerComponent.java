@@ -5,6 +5,9 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 
 public class PlayerComponent extends Component {
+
+
+    private int hp;
     private double speed = 10;
     private Vec2 speedX = new Vec2(10,0);
     private Vec2 negSpeedX = new Vec2(-10,0);
@@ -26,5 +29,10 @@ public class PlayerComponent extends Component {
     }
     public void right(){
         entity.translate(speedX);
+    }
+
+//    public
+    public void damage(double damage){
+
     }
 }
