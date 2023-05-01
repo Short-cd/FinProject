@@ -8,11 +8,11 @@ public class PlayerComponent extends Component {
 
 
     private int hp;
-    private double speed = 10;
-    private Vec2 speedX = new Vec2(10,0);
-    private Vec2 negSpeedX = new Vec2(-10,0);
-    private Vec2 speedY = new Vec2(0, 10);
-    private Vec2 negSpeedY = new Vec2(0, -10);
+    private double speed = 5;
+    private Vec2 speedX = new Vec2(speed,0);
+    private Vec2 negSpeedX = new Vec2(-speed,0);
+    private Vec2 speedY = new Vec2(0, speed);
+    private Vec2 negSpeedY = new Vec2(0, -speed);
 
     public Entity getPlayer(){
         return entity;

@@ -127,24 +127,24 @@ public class TDGameApp extends GameApplication {
     private Point2D checkCollisionLocation(Entity thing1, Entity thing2){//building
         //left and down work but right and up don't
         double xLoc = thing1.getX(), yLoc = thing1.getY();
-        if(leftPress&&
-                (thing1.getY()<thing2.getBottomY()-5&&thing1.getBottomY()>thing2.getY()+5)){//compare to y value (HOW?)
+        if(leftPress&&!rightPress&&
+                (thing1.getY()<thing2.getBottomY()-10&&thing1.getBottomY()>thing2.getY()+10)){//compare to y value (HOW?)
             //pressed "A"
             xLoc = thing2.getRightX();
 //            player.getComponent(PlayerComponent.class).right();
         }
-        if(rightPress&&
-                (thing1.getY()<thing2.getBottomY()-5&&thing1.getBottomY()>thing2.getY()+5)){// compare to the y value (HOW?)
+        if(rightPress&&!leftPress&&
+                (thing1.getY()<thing2.getBottomY()-10&&thing1.getBottomY()>thing2.getY()+10)){// compare to the y value (HOW?)
             //pressed "D"
             xLoc = thing2.getX()-thing1.getWidth();
         }
-        if(downPress&&
-                (thing1.getX()<thing2.getRightX()-5&&thing1.getRightX()>thing2.getX()+5)){//compare to x value
+        if(downPress&&!upPress&&
+                (thing1.getX()<thing2.getRightX()-10&&thing1.getRightX()>thing2.getX()+10)){//compare to x value
             //pressed "S"
             yLoc = thing2.getY()-thing1.getHeight();
         }
-        if(upPress&&
-                (thing1.getX()<thing2.getRightX()-5&&thing1.getRightX()>thing2.getX()+5)){//compare to x value
+        if(upPress&&!downPress&&
+                (thing1.getX()<thing2.getRightX()-10&&thing1.getRightX()>thing2.getX()+10)){//compare to x value
             //pressed "W"
             yLoc = thing2.getBottomY();
         }

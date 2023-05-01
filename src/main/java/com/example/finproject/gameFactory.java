@@ -19,9 +19,11 @@ public class gameFactory implements EntityFactory{
     @Spawns("Player")
     public Entity spawnBucket(SpawnData data){//spawns player
         var texture = texture("player.png").outline(Color.web("blue", 1), 5);
+//        texture.
         return entityBuilder()
                 .type(TDGameApp.Type.PLAYER)
                 .at(100, 100)
+                .scale(0.3, 0.3)
                 .viewWithBBox(texture)
                 .collidable()
                 .with(new PlayerComponent())
